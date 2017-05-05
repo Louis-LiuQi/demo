@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>表单验证插件</title>
+		<style>
+		label{
+			display: inline-block;
+			width: 200px;
+		}
+		fieldset{
+			width: 800px;
+			margin: 50px auto;
+		}
+		textarea{
+			vertical-align: top;
+			width: 220px;
+			margin-right: 10px;
+		}
+		input{
+			width: 220px;
+			margin-right: 10px;
+		}
+		em{
+			color: red;
+			font-weight: bold;
+		}
+		em.error{
+			padding-left: 15px;
+			color: black;
+			background: url("images/unchecked.gif") no-repeat;
+		}
+		em.success{
+			color: green;
+			background: url("images/checked.gif") no-repeat;
+		}
+		</style>
+		<script src = "jquery-3.1.1.min.js"></script>
+		<script src = "jquery.validate.js"></script>
+		<script>
+			$(function() {
+					$("#form_1").validate({
+							rules:{
+							username:{required:true,minlength:2},
+							email:{required:true,email:true},
+							comment:"required"
+							},
+							messages:{
+								username:{required:'请输入用户名',minlength:'请至少输入两个字符'},
+								email:{required:'请输入邮箱',email:'邮箱格式不正确'},
+								comment:"请输入评论"
+							},
+						errorElement:"em",
+						success: function (label) {
+							label.text("").addClass('success');
+						}
+					});
+			});
+		</script>
+	</head>
+	<body>
+		<form action="" method="get" id="form_1">
+			<fieldset>
+				<legend>
+					表单验证效果
+				</legend>
+				<p>
+					<label for="cusername">姓名：</label><em>*</em>
+					<input name="username" id="cusername">
+				</p>
+				
+				<p>
+					<label for="cemail">电子邮箱：</label><em>*</em>
+					<input name="email" id="cemail">
+				</p>
+				<p>
+					<label for="ccomment">评论：</label><em>*</em>
+					<textarea name="comment" id="ccomment" cols="30" rows="10"></textarea>
+				</p>
+				<p>
+					<input class="submit" type="submit" value="提交">
+				</p>
+			</fieldset>
+		</form>
+		
+		
+	</body>
+</html>
