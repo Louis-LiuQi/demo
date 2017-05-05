@@ -1,0 +1,57 @@
+*{
+margin:0;
+padding: 0;
+}
+a{
+text-decoration: none;
+}
+ul{
+list-style: none;
+}
+.win{
+width:700px;height:290px;border:1px solid #ccc;margin:30px auto;position:relative;
+overflow: hidden;
+}
+.box{
+width:100%;height:270px;position: relative;
+}
+.box div{
+width:100%;height: 100%;position: absolute;left:100%;font-size: 70px;text-align: center;line-height: 270px;top:0;color:#fff;
+}
+.next{
+width:50px;height:70px;font-size: 20px;color:#fff;background: rgba(0,0,0,0.5);position: absolute;right:0;top:40%;line-height:70px;text-align: center;cursor: pointer;display: none;
+}
+.pre{
+width:50px;height:70px;font-size: 20px;color:#fff;background: rgba(0,0,0,0.5);position: absolute;left:0;top:40%;line-height:70px;text-align: center;cursor: pointer;display: none;
+}
+.color1{background: #FFB12F;}
+.color2{background: #00C378;}
+.color3{background: #26B2E3;}
+.color4{background: #E84C3D;}
+.color5{background: #F831FD;}
+.item ul{
+position: absolute;
+/*border:1px solid red;*/
+width: 100%;
+top: 270px;
+}
+.item ul li{
+box-sizing: border-box;
+float: left;
+height: 20px;
+width: 20%;
+background-color: gray;
+text-align: center;
+}
+.item ul li a{
+display: block;
+height: 20px;
+width: 100%;
+line-height: 20px;
+color: #fff;
+font-size: 16px;
+cursor: default;
+}
+.item ul li+li{
+border-left: 1px solid #fff;
+}
