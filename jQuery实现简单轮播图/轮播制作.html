@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>轮播图制作</title>
+		<style type="text/css">
+		* {
+		padding: 0px;
+		margin: 0px;
+		}
+		a {
+		text-decoration: none;
+		}
+		ul,li {
+		list-style: none;
+		}
+		.slider, .slider-panel img, .slider-extra {
+		width: 650px;
+		height: 413px;
+		}
+		.slider {
+		text-align: center;
+		margin: 30px auto;
+		position: relative;
+		}
+		.slider-panel, .slider-nav, .slider-pre, .slider-next {
+		position: absolute;
+		z-index: 8;
+		}
+		.slider-panel {
+		position: absolute;
+		}
+		.slider-panel img {
+		border: none;
+		}
+		.slider-extra {
+		position: relative;
+		}
+		.slider-nav {
+		/*margin-left: -20px;*/
+		position: absolute;
+		left: 35%;
+		bottom: 4px;
+		display: inline-block;
+		}
+		.slider-nav li {
+		background: #3e3e3e;
+		border-radius: 50%;
+		color: #fff;
+		cursor: pointer;
+		margin: 0 2px;
+		overflow: hidden;
+		text-align: center;
+		display: inline-block;
+		height: 18px;
+		line-height: 18px;
+		width: 18px;
+		}
+		.slider-nav .slider-item-selected {
+		background: #FF7F00;
+		}
+		.slider-page a{
+		background: rgba(0, 0, 0, 0.2);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#33000000,endColorstr=#33000000);
+		color: #fff;
+		text-align: center;
+		display: block;
+		font-family: "simsun";
+		font-size: 22px;
+		width: 28px;
+		height: 62px;
+		line-height: 62px;
+		margin-top: -31px;
+		position: absolute;
+		top: 50%;
+		}
+		.slider-page a:HOVER {
+		background: rgba(0, 0, 0, 0.4);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#66000000,endColorstr=#66000000);
+		}
+		.slider-next {
+		left: 100%;
+		margin-left: -28px;
+		}
+		</style>
+		<script src="js/jquery-3.1.1.min.js"></script>
+		<script src="js/main.js"></script>
+</head>
+<body>
+	<h1 style="text-align:center">
+		jQuery实现简单轮播图制作
+	</h1>
+	<div class="slider">
+			<ul class="slider-main">
+				<li class="slider-panel">
+					<a href="#" target="_blank"><img alt="" title="" src="images/2.jpg"></a>
+				</li>
+				<li class="slider-panel">
+					<a href="#" target="_blank"><img alt="" title="" src="images/5.jpg"></a>
+				</li>
+				<li class="slider-panel">
+					<a href="#" target="_blank"><img alt="" title="" src="images/1.jpg"></a>
+				</li>
+				<li class="slider-panel">
+					<a href="#" target="_blank"><img alt="" title="" src="images/6.jpg"></a>
+				</li>
+				<li class="slider-panel">
+					<a href="#" target="_blank"><img alt="" title="" src="images/3.jpg"></a>
+				</li>
+				<li class="slider-panel">
+					<a href="#" target="_blank"><img alt="" title="" src="images/7.jpg"></a>
+				</li>
+				<li class="slider-panel">
+					<a href="#" target="_blank"><img alt="" title="" src="images/4.jpg"></a>
+				</li>
+				<li class="slider-panel">
+					<a href="#" target="_blank"><img alt="" title="" src="images/8.jpg"></a>
+				</li>
+			</ul>
+			<div class="slider-extra">
+				<div class="slider-box">
+					<ul class="slider-nav">
+						<li class="slider-item">1</li>
+						<li class="slider-item">2</li>
+						<li class="slider-item">3</li>
+						<li class="slider-item">4</li>
+						<li class="slider-item">5</li>
+						<li class="slider-item">6</li>
+						<li class="slider-item">7</li>
+						<li class="slider-item">8</li>
+					</ul>
+				</div>
+				<div class="slider-page">
+					<a class="slider-pre" href="javascript:;;">&lt</a>
+					<a class="slider-next" href="javascript:;;">&gt</a>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
