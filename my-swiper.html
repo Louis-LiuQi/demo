@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>my-swiper</title>
+	<link rel="stylesheet" href="css1/reset.css">
+	<style>
+		.main{
+			width: 100%;
+			box-sizing: border-box;
+		}
+		.banner{
+			width:100%;
+			overflow: hidden;
+			box-sizing: border-box;
+			position: relative;
+		}
+		.wrap{
+			/*width: 100%;*/
+			/*transition:all 1s;*/
+		}
+		.banner .wrap>div{
+			width: 100%;
+			float: left;
+		}
+		.banner .wrap>div img{
+			width: 100%;
+		}
+		.banner_items{
+			position: absolute;
+			bottom:20px;
+			left:0;
+			width: 100%;
+			text-align: center;
+		}
+		.banner_items ul{
+			display: inline-block;
+		}
+		.banner_items ul li{
+			width: 10px;
+			height: 10px;
+			/*float: left;*/
+			margin:0 5px;
+			display: inline-block;
+		}
+		.banner_items ul .active a{
+			background: #fff;
+		}
+		.banner_items ul li a{
+			display: block;
+			width: 100%;
+			height: 100%;
+			border:1px solid #fff;
+			border-radius:50%;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div class="banner">
+			<div class="wrap clearfix">
+				<div><img src="images/banner_01.jpg" alt=""></div>
+				<div><img src="images/banner_01.jpg" alt=""></div>
+				<div><img src="images/banner_01.jpg" alt=""></div>
+				<div><img src="images/banner_01.jpg" alt=""></div>
+			</div>
+			<div class="banner_items">
+				<ul class="">
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script src="js/jquery-3.2.1.min.js"></script>
+	<script>
+		$(function() {
+			var interval;
+			var item = "";
+			var num = 0;
+			var len = $(".banner .wrap >div").length;
+			var w = $(window).outerWidth()
+			var l = 1920/478;
+			$(".wrap").css('transform', 'translateX(' + -num*w + 'px)');
+			$(".wrap>div").css("width",w+"px");
+			$(".wrap").css('width', (len+2)*w + "px");
+
+			for (var i = 0; i < len; i++) {
+				item += '<li><a href="#"></a></li>';
+			}
+
+			var firstBanner = $(".wrap>div").eq(0).prop("outerHTML");
+			var lastBanner = $(".wrap>div").eq(len-1).prop("outerHTML");
+
+			// $(".wrap").append(firstBanner);
+			// $(".wrap").prepend(lastBanner);
+			$(".banner_items>ul").html(item);
+			$(".banner_items>ul>li:first").addClass('active');
+
+			// 执行动画
+			function play(num){
+				$(".wrap").css('transition', 'all 1s');
+				$(".wrap").css('transform', 'translateX(' + -num*w + 'px)');
+				$(".banner_items>ul>li").removeClass('active');
+				$(".banner_items>ul>li").eq(num).addClass('active');
+			}
+
+			// 下一张
+			function next(){
+				if (num<len-1) {
+					num++;
+					play(num);
+				}else{
+					num = 0;
+					play(num);
+				}
+			}
+
+			// 上一张
+			function prev(){
+				if (num>0) {
+					num--;
+					play(num);
+				}else{
+					num = len -1;
+					play(num);
+				}
+			}
+
+			$(".banner_items>ul>li>a").click(function() {
+				stop();
+				num = $(this).parent("li").index();
+				play(num);
+				star();
+
+			});
+
+			function stop(){
+				clearInterval(interval);
+			}
+
+			function star(){
+				interval = setInterval(next,3000);
+			}
+
+			$(window).resize(function(event) {
+				w = $(window).outerWidth()
+				$(".wrap>div").css("width",w+"px");
+				$(".wrap").css('width', (len+2)*w + "px");
+			});
+			star();
+		});
+	</script>
+</body>
+</html>
