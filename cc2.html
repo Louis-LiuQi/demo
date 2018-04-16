@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <title></title>
+        <style>
+            .circle {
+                width: 120px;
+                height: 120px;
+                position: relative;
+                border-radius: 50%;
+                background: red;
+            }
+                 
+            .clip_left,.clip_right{
+                width:120px;
+                height:120px;
+                position: absolute;
+                top: 0px;left: 0px;
+            }
+            .circle_left, .circle_right{
+                width:120px;
+                height:120px;
+                position: absolute;
+                border-radius: 50%;
+                top: 0px;left: 0px;
+                background: green;
+            }
+            /*出于展示用的改变背景色*/
+            /*.circle_left{
+                background: green;
+            }
+            .circle_right{
+                background: lightblue;
+            }*/
+            .circle_right,.clip_right {
+                clip:rect(0,auto,auto,60px);
+            }
+            .circle_left , .clip_left{
+                clip:rect(0,60px,auto,0);
+            }
+                 
+            /*
+            *当top和left取值为auto时，相当于0
+            *当bottom和right取值为auto时，相当于100%
+            */
+            .mask {
+                width: 100px;
+                height: 100px;
+                border-radius: 50%;
+                left: 10px;
+                top: 10px;
+                background: #FFF;
+                position: absolute;
+                text-align: center;
+                line-height: 100px;
+                font-size: 16px;
+            }
+ 
+        </style>
+    </head>
+    <body>
+        <!--背景圆-->
+        <div class="circle">
+            <!--左半边圆-->
+            <div class="circle_left">
+                <div class="clip_left"></div>
+            </div>
+            <!--右半边圆-->
+            <div class="circle_right">
+                <div class="clip_right"></div>
+            </div>
+            <div class="mask">
+                <span>20</span>%
+            </div>
+        </div>
+        <div class="circle">
+            <!--左半边圆-->
+            <div class="circle_left">
+                <div class="clip_left"></div>
+            </div>
+            <!--右半边圆-->
+            <div class="circle_right">
+                <div class="clip_right"></div>
+            </div>
+            <div class="mask">
+                <span>56</span>%
+            </div>
+        </div>
+        <div class="circle">
+            <!--左半边圆-->
+            <div class="circle_left">
+                <div class="clip_left"></div>
+            </div>
+            <!--右半边圆-->
+            <div class="circle_right">
+                <div class="clip_right"></div>
+            </div>
+            <div class="mask">
+                <span>49</span>%
+            </div>
+        </div>
+        <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+        <script>
+            // $(function(){
+            //     if( $('.mask span').text() <= 50 ){
+            //         $('.circle_right').css('transform','rotate('+($('.mask span').text()*3.6)+'deg)');
+            //     }else{
+            //         $('.circle_right').css({
+            //             'transform':'rotate(0deg)',
+            //             "background":"red"
+            //         });
+            //         $('.circle_left').css('transform','rotate('+(($('.mask span').text()-50)*3.6)+'deg)');
+            //     }
+            // })
+            var list = [20,56,49]
+            window.onload = function(){
+                var circle = document.getElementsByClassName("circle");
+                for (var i = 0; i < list.length; i++) {
+                    if (list[i] <= 50) {
+                        circle[i].querySelector(".circle_right").style.transform = 'rotate(30deg)';
+                    }else{
+                        circle[i].querySelector(".circle_right").style.transform = 'rotate(0deg)';
+                        circle[i].querySelector(".circle_right").style.background = 'red';
+                        circle[i].querySelector(".circle_left").style.transform = 'rotate(20deg)';
+
+                    }
+                }
+            }
+        </script>
+    </body>
+</html>
