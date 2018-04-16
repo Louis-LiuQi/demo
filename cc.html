@@ -1,0 +1,57 @@
+<!DOCTYPE html>  
+<html>  
+<head>  
+    <meta charset="UTF-8">  
+    <title></title>  
+    <style>
+        .cc{
+            margin:200px;
+        }
+    </style>
+</head>  
+<body>  
+    <div class="cc">
+        <canvas id="canvas" width="200" height="200"></canvas>
+    </div>
+      
+    <script>  
+            var canvas = document.getElementById('canvas');  
+            var process = 40;  
+            var context = canvas.getContext('2d');  
+   
+            // 画外圆  
+            context.beginPath();  
+            context.arc(100, 100, 100, 0, Math.PI*2);  
+            context.closePath();  
+            context.fillStyle = '#666';  
+            context.fill();  
+            drawCricle(context, process);
+             
+            function drawCricle(ctx, percent){  
+                // 进度环  
+                ctx.beginPath();  
+                ctx.moveTo(100, 100);    
+                ctx.arc(100, 100, 100, Math.PI * 1.5, Math.PI * (1.5 + 2 * percent / 100 ));  
+                ctx.closePath();  
+                ctx.fillStyle = 'red';  
+                ctx.fill();  
+   
+                // 内圆
+                ctx.beginPath();  
+                ctx.arc(100, 100, 75, 0, Math.PI * 2);  
+                ctx.closePath();  
+                ctx.fillStyle = 'white';  
+                ctx.fill();  
+   
+                // 填充文字  
+                ctx.font= "bold 30px microsoft yahei";   
+                ctx.fillStyle = "black";  
+                ctx.textAlign = "center";    
+                ctx.textBaseline = 'middle';    
+                ctx.moveTo(100, 100);    
+                ctx.fillText(process + '%', 100, 100);  
+            }  
+    
+    </script>  
+</body>  
+</html>  
